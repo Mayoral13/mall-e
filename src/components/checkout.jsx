@@ -1,4 +1,13 @@
+import { useContext } from "react";
+import { Context } from "../Context";
+import Payment from "./payment";
 const Checkout = ()=>{
+  const {isOn, SwitchOn} = useContext(Context)
+  if(isOn){
+    return(
+      <Payment/>
+    )
+  }else{
 return(
     <section className="bg-white border-gray-200 dark:bg-gray-300">
   <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
@@ -193,12 +202,11 @@ return(
         
 
             <div className="flex justify-end">
-              <a
-                href="#"
+              <button onClick={SwitchOn}
                 className="block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600"
               >
                 Checkout
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -207,6 +215,7 @@ return(
   </div>
 </section>
 )
+  }
 
 
 }
